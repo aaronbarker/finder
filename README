@@ -1,0 +1,37 @@
+This is a public release of a plugin that was written internally at my company.
+
+We want to release our plugins to give back to the community. However we will not be supporting public requests for new functionality.  Naturally bug reports benefit us so they are welcome.  Hopefully by publishing these on github the community can grab a copy and make it their own.
+
+The lds usage in the name and in the files are to namespace them for my company.
+
+We are working on getting a place up to put our documentation and examples.  For now here is a list of the options for this plugin.  This list is parsed into a better format internally. But this is at least something to look at until something better comes along :)
+
+
+name	type	defaultValue	potentialValues (if restricted)	description
+
+source	string			Either the selector of where an inline UL is or the URL to an ajax file
+easing	string	linear	'.$easingOptions.'	easing animation that is used to slide the finder to the next column
+duration	number	500		how long the slide animation will take
+target	string			Selector where the script should put any "page" content. By default it puts it in the element directly after the one that the script is set on.
+columnHeight	number	300		height of the column (which inherently defines the height of the finder)
+columnWidth	number	200		width of a column.  If 0, columns will size to their content
+columnScroll	string	auto	auto|scroll|false	For the scrollbar on each column. Auto = only show when content is long enough. scroll = always show scrollbar (for consistency if desired). false = do nothing, control in css
+width	number	600		width of the finder
+scroll	string	auto	auto|scroll|false	Should the finder have a horizontal scrollbar. Auto = only show when content is wide enough. scroll = always show scrollbar. false = do nothing, control in css
+loadingText	string	Loading...		Text to be inserted in the loading span when waiting for content.
+gotoClass	string	goto		Class that identifies results that should load as a full page, not in the target location
+focusClass	string	ui-state-focus		Class that is used when an item is focused
+activeClass	string	ui-state-active		Class that is used when an item is in the selected path
+activeNowClass	string	ui-state-active-now		Class that is used when an item is in the selected path but is the currently active item
+finderClass	string	ui-finder		Class added to the target element and used as a prefix for a number of other internal classes
+prev	string			Selector that identifies the "previous" button for this finder
+next	string			Selector that identifies the "next" button for this finder
+onInit	function			callback that fires when the finder is done loading.  passes in the finder "function(finder){}"
+onSelect	function			callback that fires when any link is clicked.  passes in the li parent of the clicked link "function(li){}"
+onMove	function			callback that fires when the move method is called (forward/back).  passes in the column you are moving TO "function(column){}"
+onFolderSelect	function			callback that fires after a folder is selected (but before it loads)
+onFolderLoad	function			callback that fires after a folder is loaded via ajax (one time only)
+onFolderDisplay	function			callback that fires after a folder is displayed (multiple times)
+onPageSelect	function			callback that fires after a page is selected (but before it loads)
+onPageLoad	function			callback that fires after a page is loaded via ajax (one time only)
+parseData	function			function that can be run against data that returns during an ajax request for additional navigation.  passes in the data that was returned. This would allow for json (etc) to be sent and then put into a structure on the page to save filesize. "function(column){}"
